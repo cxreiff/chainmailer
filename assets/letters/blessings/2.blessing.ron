@@ -1,5 +1,5 @@
 TestimonialStub(
-    message: "got the job {pronoun_subject} were seeking within a week",
+    message: "got the job {pronoun_subject} sought within a week",
     effect: Income(10),
     targets: [5],
 )

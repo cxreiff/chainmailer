@@ -2,7 +2,7 @@ use std::time::Duration;
 
 use bevy::{prelude::*, time::common_conditions::on_timer};
 use bevy_ratatui_camera::RatatuiCamera;
-use rand::distributions::uniform::SampleRange;
+use rand::distr::uniform::SampleRange;
 
 use crate::{constants::WORD_CUBE_LENGTH, letters::WordBag, rng::RngResource, states::GameStates};
 
@@ -115,7 +115,7 @@ fn get_spawn_position(
         .viewport_to_world(camera_transform, Vec2::new(viewport_size.x - 0.05, 0.0))
         .ok()?;
 
-    let z = (near_depth..far_depth).sample_single(&mut rng.0);
+    let z = (near_depth..far_depth).sample_single(&mut rng.0).ok()?;
 
     let top_left_distance =
         top_left.intersect_plane(Vec3::new(0., 0., -z), InfinitePlane3d::new(Vec3::Z))?;
@@ -125,7 +125,9 @@ fn get_spawn_position(
     let top_left_at_z = top_left.get_point(top_left_distance);
     let top_right_at_z = top_right.get_point(top_right_distance);
 
-    let x = (top_left_at_z.x..top_right_at_z.x).sample_single(&mut rng.0);
+    let x = (top_left_at_z.x..top_right_at_z.x)
+        .sample_single(&mut rng.0)
+        .ok()?;
     let y = top_left_at_z.y + WORD_CUBE_LENGTH;
 
     Some(Vec3::new(x, y, -z))

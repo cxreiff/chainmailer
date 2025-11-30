@@ -1,6 +1,6 @@
 use bevy::prelude::*;
 use bevy_asset_loader::asset_collection::AssetCollection;
-use rand::seq::SliceRandom;
+use rand::seq::IndexedRandom;
 
 use crate::{interface::draw::Flags, rng::RngResource};
 
@@ -56,7 +56,7 @@ pub enum SoundEffect {
 }
 
 fn sound_effects_observer(
-    trigger: Trigger<SoundEffect>,
+    sound_effect: On<SoundEffect>,
     mut commands: Commands,
     handles: Res<SoundEffectAssets>,
     mut rng: Local<RngResource>,
@@ -66,7 +66,7 @@ fn sound_effects_observer(
         return;
     }
 
-    let sound = match trigger.event() {
+    let sound = match *sound_effect {
         SoundEffect::Window => &handles.window,
         SoundEffect::TextGroup => &handles.text_group,
         SoundEffect::TextCharacter => handles.text_character.choose(&mut rng.0).unwrap(),

@@ -64,12 +64,10 @@ pub struct ConfettiSpawn {
 }
 
 fn confetti_spawn_observer(
-    trigger: Trigger<ConfettiSpawn>,
+    confetti_spawn: On<ConfettiSpawn>,
     mut commands: Commands,
     mut rng: Local<RngResource>,
 ) {
-    let confetti_spawn = trigger.event();
-
     for index in 0..CONFETTI_AMOUNT {
         let theta = (2.0 * PI / CONFETTI_AMOUNT as f32) * index as f32;
         let x = confetti_spawn.position.x + theta.cos() * 0.02;
@@ -108,7 +106,7 @@ fn despawn_confetti_system(
     for (entity, mut confetti) in &mut confettis {
         confetti.timer.tick(time.delta());
 
-        if confetti.timer.finished() {
+        if confetti.timer.is_finished() {
             commands.entity(entity).despawn();
         }
     }

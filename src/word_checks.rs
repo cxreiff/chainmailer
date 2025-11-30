@@ -22,7 +22,7 @@ pub struct SubmittedWord;
 pub struct ActivateEffect(Effect);
 
 fn submitted_word_observer(
-    _trigger: Trigger<SubmittedWord>,
+    _event: On<SubmittedWord>,
     mut commands: Commands,
     mut prompt: ResMut<Prompt>,
     mut current_letter: ResMut<CurrentLetter>,
@@ -96,8 +96,8 @@ fn color_for_character(character: &char) -> ratatui::style::Color {
     }
 }
 
-fn activate_effect_observer(trigger: Trigger<ActivateEffect>, mut stats: ResMut<Statistics>) {
-    match trigger.event().0 {
+fn activate_effect_observer(activate_effect: On<ActivateEffect>, mut stats: ResMut<Statistics>) {
+    match activate_effect.0 {
         Effect::Score(score) => {
             stats.score += score;
         }

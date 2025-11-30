@@ -36,7 +36,7 @@ impl Plugin for AppPlugin {
                 smoothing_factor: 1.0,
                 ..default()
             },
-            EntityCountDiagnosticsPlugin,
+            EntityCountDiagnosticsPlugin::default(),
             RatatuiPlugins {
                 enable_mouse_capture: true,
                 ..default()

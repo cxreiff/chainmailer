@@ -319,7 +319,7 @@ fn create_letter_bag_system(
 fn random_initial<R: Rng>(rng: &mut R) -> char {
     "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
         .chars()
-        .nth(rng.gen_range(0..26))
+        .nth(rng.random_range(0..26))
         .unwrap()
 }
 

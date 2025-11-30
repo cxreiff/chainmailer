@@ -1,5 +1,5 @@
 use bevy::prelude::*;
-use rand::seq::{IteratorRandom, SliceRandom};
+use rand::seq::{IndexedRandom, IteratorRandom};
 use tachyonfx::Shader;
 
 use crate::{
@@ -110,7 +110,7 @@ pub fn generate_current_letter_system(
 }
 
 pub fn letter_cleared_observer(
-    _trigger: Trigger<LetterCleared>,
+    _event: On<LetterCleared>,
     mut commands: Commands,
     mut stats: ResMut<Statistics>,
 ) {
@@ -119,7 +119,7 @@ pub fn letter_cleared_observer(
     commands.set_state(GameStates::Resetting);
 }
 
-pub fn letter_failed_observer(_trigger: Trigger<LetterFailed>, mut commands: Commands) {
+pub fn letter_failed_observer(_event: On<LetterFailed>, mut commands: Commands) {
     commands.trigger(SoundEffect::LetterFail);
     commands.set_state(GameStates::Resetting);
 }

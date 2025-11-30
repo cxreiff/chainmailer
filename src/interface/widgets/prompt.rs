@@ -107,7 +107,7 @@ fn blink_prompt_system(mut prompt_state: ResMut<PromptState>) {
 fn tick_timer_system(mut commands: Commands, time: Res<Time>, mut prompt: ResMut<Prompt>) {
     prompt.timer.tick(time.delta());
 
-    if prompt.timer.finished() {
+    if prompt.timer.is_finished() {
         commands.trigger(LetterFailed);
     }
 }

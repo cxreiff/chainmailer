@@ -7,6 +7,6 @@ pub struct RngResource(pub ChaCha8Rng);
 
 impl Default for RngResource {
     fn default() -> Self {
-        Self(ChaCha8Rng::from_entropy())
+        Self(ChaCha8Rng::from_os_rng())
     }
 }
