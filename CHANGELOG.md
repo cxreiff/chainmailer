@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.2](https://github.com/cxreiff/chainmailer/compare/v0.2.1...v0.2.2) - 2025-11-30
+
+### Other
+
+- bevy 0.17, bevy_ratatui 0.10, bevy_ratatui_camera 0.16
+
 ## [0.1.7](https://github.com/cxreiff/chainmail/releases/tag/v0.1.7) - 2025-06-08
 
 ### Fixed

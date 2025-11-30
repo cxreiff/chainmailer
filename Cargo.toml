@@ -2,7 +2,7 @@
 name = "chainmailer"
 description = "If You Do Not Send This Letter To Ten Recipients You Will Regret It"
 authors = ["cxreiff <cooper@cxreiff.com>"]
-version = "0.2.1"
+version = "0.2.2"
 edition = "2024"
 license = "MIT OR Apache-2.0"
 repository = "https://github.com/cxreiff/chainmail"
